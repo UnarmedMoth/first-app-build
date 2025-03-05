@@ -18,8 +18,4 @@ class API:
             Post(
                 "Sara", "Python is a programming language",
                 datetime.datetime(year=2021, month=5, day=3)
-            ),
-            Post(
-                "Toad", "@Adam, for real? I thought it was a bird -_-",
-                datetime.datetime(year=2021, month=5, day=3)
             )]
