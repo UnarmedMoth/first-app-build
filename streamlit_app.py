@@ -1,6 +1,8 @@
+
 import streamlit as st
-from Views import FeedView, AddPostView
-from Services import get_feed, add_post
-AddPostView(add_post)
-st.write("___")
-FeedView(get_feed)
+
+conn = st.connection("snowflake")
+df = conn.query("SELECT * FROM mytable;", ttl="10m")
+
+for row in df.itertuples():
+    st.write(f"{row.NAME} has a :{row.PET}:")
