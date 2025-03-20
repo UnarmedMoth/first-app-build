@@ -1,10 +1,4 @@
-import streamlit as st
-from googletrans import Translator
-import asyncio  # Add asyncio for async functionality
-from languages import *  #This contains language names
-
-# Mapping of language names to their ISO 639-1 codes
-language_code_map = {
+languages = {
     "Afrikaans": "af",
     "Akan": "ak",
     "Albanian": "sq",
@@ -139,23 +133,3 @@ language_code_map = {
     "Yoruba": "yo",
     "Zulu": "zu"
 }
-
-st.title("Language Translation App")
-
-source_text = st.text_area("Enter text to translate:")
-target_language_name = st.selectbox("Select target language:", list(language_code_map.keys()))
-target_language_code = language_code_map.get(target_language_name)
-
-translate = st.button('Translate')
-
-async def translate_text(source_text, target_language_code):
-    translator = Translator()
-    out = await translator.translate(source_text, dest=target_language_code)  # Await the coroutine
-    return out.text
-
-if translate:
-    if source_text.strip():  # Check if text is not empty
-        translated_text = asyncio.run(translate_text(source_text, target_language_code))  # Run the async function
-        st.write(translated_text)  # Display translated text
-    else:
-        st.write("Please enter text to translate.")  # Handle empty text case
