@@ -1,1 +1,5 @@
-streamlit
+# Streamlit is used for building interactive web applications
+streamlit==1.43.2
+
+# googletrans is a Python wrapper for Google Translate API
+googletrans==4.0.2
