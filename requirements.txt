@@ -2,4 +2,4 @@
 streamlit==1.43.2
 
 # googletrans is a Python wrapper for Google Translate API
-googletrans==4.0.2
+googletrans==4.0.0rc1
