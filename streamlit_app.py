@@ -149,9 +149,12 @@ translate_button = st.button('Translate')
 
 async def translate_text(source_text, target_language_code):
     translator = Translator()
-    # The translate method is asynchronous, use await to get the result
-    result = await translator.translate(source_text, dest=target_language_code)
-    return result.text
+    try:
+        # The translate method is asynchronous, use await to get the result
+        result = await translator.translate(source_text, dest=target_language_code)
+        return result.text
+    except Exception as e:
+        return f"An error occurred: {e}"
 
 # Streamlit callback function to run translation
 if translate_button:
