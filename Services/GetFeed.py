@@ -1,4 +1,4 @@
-from API.API import api_instance
+from API import api_instance
 import datetime
 def get_feed():
     to_date = datetime.datetime.now()

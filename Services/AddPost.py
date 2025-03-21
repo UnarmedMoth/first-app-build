@@ -1,4 +1,4 @@
-from API.API import api_instance
+from API import api_instance
 from Models import Post
 def add_post(post: Post):
     if post is None or len(post.creator_name) == 0 or len(post.content) == 0:
