@@ -147,11 +147,15 @@ target_language_code = language_code_map.get(target_language_name)
 
 translate_button = st.button('Translate')
 
-def translate_text(source_text, target_language_code):
+# Define the async translation function
+async def translate_text_async(source_text, target_language_code):
     translator = Translator()
-    # Using asyncio.run to handle the coroutine synchronously
-    result = asyncio.run(translator.translate(source_text, dest=target_language_code))
+    result = await translator.translate(source_text, dest=target_language_code)
     return result.text
+
+# Wrapper function to run async function
+def translate_text(source_text, target_language_code):
+    return asyncio.run(translate_text_async(source_text, target_language_code))
 
 if translate_button:
     if source_text.strip():  # Check if text is not empty
