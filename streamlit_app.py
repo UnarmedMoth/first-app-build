@@ -147,19 +147,17 @@ target_language_code = language_code_map.get(target_language_name)
 
 translate_button = st.button('Translate')
 
-# Define the async translation function
-async def translate_text_async(source_text, target_language_code):
+async def translate_text(source_text, target_language_code):
     translator = Translator()
+    # The translate method is asynchronous, use await to get the result
     result = await translator.translate(source_text, dest=target_language_code)
     return result.text
 
-# Wrapper function to run async function
-def translate_text(source_text, target_language_code):
-    return asyncio.run(translate_text_async(source_text, target_language_code))
-
+# Streamlit callback function to run translation
 if translate_button:
     if source_text.strip():  # Check if text is not empty
-        translated_text = translate_text(source_text, target_language_code)
+        # Run translation and display the result
+        translated_text = asyncio.run(translate_text(source_text, target_language_code))
         st.write(translated_text)  # Display translated text
     else:
         st.write("Please enter text to translate.")  # Handle empty text case
