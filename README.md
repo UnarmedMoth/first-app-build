@@ -1,1 +1,1 @@
-# A simple translator application, but it is not perfect translator.
+A simple translator application, but it is not perfect translator.
